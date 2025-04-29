@@ -90905,30 +90905,34 @@ const darkTheme = {
 };
 const Container = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
   width: 350px;
-  padding: 20px;
+  padding: 15px;
   font-family: 'Roboto', sans-serif;
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.text};
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-height: 600px;
+  overflow-y: auto;
 `;
 const Header = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
+  margin-bottom: 15px;
   padding-bottom: 10px;
+  border-bottom: 1px solid ${props => props.theme.colors.border};
 `;
 const Title = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].h1 `
-  font-size: 24px;
+  font-size: 20px;
   margin: 0;
+  font-weight: 600;
 `;
 const Balance = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
-  margin: 20px 0;
+  margin: 15px 0;
   color: ${props => props.theme.colors.primary};
+  text-align: center;
 `;
 const Button = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].button `
   background-color: ${props => props.theme.colors.primary};
@@ -90989,18 +90993,101 @@ const Tab = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].button `
   }
 `;
 const TokenList = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
+  margin: 10px 0;
 `;
-const TokenItem = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+const TokenCard = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
+  align-items: center;
+  padding: 12px;
+  margin: 8px 0;
+  background: ${props => props.theme.colors.card};
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.colors.border};
+  cursor: pointer;
+  transition: transform 0.2s;
   
-  &:last-child {
-    border-bottom: none;
+  &:hover {
+    transform: translateY(-2px);
   }
+`;
+const TokenInfo = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+const TokenSymbol = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  font-size: 16px;
+  font-weight: 600;
+  color: ${props => props.theme.colors.text};
+`;
+const TokenAmount = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  font-size: 14px;
+  color: ${props => props.theme.colors.primary};
+`;
+const TokenPrice = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  font-size: 12px;
+  color: ${props => props.theme.colors.text};
+  opacity: 0.8;
+`;
+const QRCodeContainer = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: ${props => props.theme.colors.card};
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.colors.border};
+  margin: 20px 0;
+`;
+const QRCodeWrapper = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  margin: 10px 0;
+`;
+const AddressText = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  font-size: 12px;
+  color: ${props => props.theme.colors.text};
+  word-break: break-all;
+  text-align: center;
+  margin: 10px 0;
+`;
+const SeedPhraseContainer = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__["default"])(Card) `
+  margin: 20px 0;
+`;
+const SeedPhraseGrid = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+`;
+const SeedWord = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  background: ${props => props.theme.colors.background};
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid ${props => props.theme.colors.border};
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${props => props.theme.colors.text};
+`;
+const SeedWordNumber = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].span `
+  color: ${props => props.theme.colors.primary};
+  margin-right: 5px;
+  font-weight: bold;
+`;
+const SeedPhraseWarning = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  background: ${props => props.theme.colors.error}20;
+  border: 1px solid ${props => props.theme.colors.error};
+  padding: 15px;
+  border-radius: 4px;
+  margin: 20px 0;
+  color: ${props => props.theme.colors.error};
+  font-size: 14px;
+  line-height: 1.5;
 `;
 const NetworkSelector = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].select `
   width: 100%;
@@ -91050,58 +91137,69 @@ const ChartContainer = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"]
   height: 200px;
   width: 100%;
 `;
-const TokenCard = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  margin: 10px 0;
+const QuickActions = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 15px 0;
+`;
+const QuickActionButton = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].button `
+  background: ${props => props.theme.colors.card};
+  border: 1px solid ${props => props.theme.colors.border};
+  padding: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
   
   &:hover {
-    transform: translateY(-2px);
+    background: ${props => props.theme.colors.primary};
+    color: white;
   }
 `;
-const TokenInfo = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  display: flex;
-  flex-direction: column;
+const ActionIcon = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].span `
+  font-size: 20px;
 `;
-const TokenAmount = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  font-size: 18px;
-  font-weight: bold;
-  color: ${props => props.theme.colors.primary};
-`;
-const TokenSymbol = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  font-size: 14px;
-  color: ${props => props.theme.colors.text};
-`;
-const TokenPrice = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+const ActionLabel = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].span `
   font-size: 12px;
-  color: ${props => props.theme.colors.text};
 `;
-const QRCodeContainer = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  background: ${props => props.theme.colors.card};
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme.colors.border};
-  margin: 20px 0;
+const AdvancedSection = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+    margin: 15px 0;
+    padding: 15px;
+    background: ${props => props.theme.colors.card};
+    border-radius: 8px;
+    border: 1px solid ${props => props.theme.colors.border};
 `;
-const QRCodeWrapper = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  padding: 10px;
-  background: white;
-  border-radius: 8px;
-  margin: 10px 0;
+const AlertList = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+    margin: 10px 0;
 `;
-const AddressText = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
-  font-size: 12px;
-  color: ${props => props.theme.colors.text};
-  word-break: break-all;
-  text-align: center;
-  margin: 10px 0;
+const AlertItem = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: ${props => props.theme.colors.background};
+    border-radius: 4px;
+    margin: 5px 0;
+`;
+const StakingCard = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+    background: ${props => props.theme.colors.card};
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid ${props => props.theme.colors.border};
+`;
+const NewsItem = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div `
+    padding: 10px;
+    border-bottom: 1px solid ${props => props.theme.colors.border};
+    cursor: pointer;
+    
+    &:hover {
+        background: ${props => props.theme.colors.background};
+    }
 `;
 const Popup = () => {
     const [balance, setBalance] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
@@ -91124,6 +91222,15 @@ const Popup = () => {
         totalReceived: 0,
         averageAmount: 0,
         mostFrequentRecipient: ''
+    });
+    const [tokenAlerts, setTokenAlerts] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+    const [stakedTokens, setStakedTokens] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+    const [tokenNews, setTokenNews] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
+    const [showAdvanced, setShowAdvanced] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false);
+    const [newAlert, setNewAlert] = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
+        token: '',
+        price: 0,
+        condition: 'above'
     });
     const getConnection = () => {
         const endpoints = {
@@ -91352,14 +91459,29 @@ const Popup = () => {
     const formatAmount = (amount) => {
         return amount.toFixed(4);
     };
-    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(styled_components__WEBPACK_IMPORTED_MODULE_7__.ThemeProvider, { theme: isDarkMode ? darkTheme : lightTheme, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Header, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Title, { children: "Solana Wallet" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ThemeToggle, { onClick: () => setIsDarkMode(!isDarkMode), children: isDarkMode ? '☀️' : '🌙' })] }), publicKey && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("b", { children: "Wallet Name:" }), " ", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "text", value: walletName, onChange: e => setWalletName(e.target.value) }), " ", (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: saveWalletName, children: "Save" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NetworkSelector, { value: network, onChange: (e) => setNetwork(e.target.value), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "devnet", children: "Devnet" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "testnet", children: "Testnet" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "mainnet-beta", children: "Mainnet" })] })] })), !publicKey ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { marginBottom: 8 }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "text", placeholder: "Wallet Name (optional)", value: walletName, onChange: e => setWalletName(e.target.value) }) }), !isImporting ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: createWallet, children: "Create New Wallet" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "text", placeholder: "Enter Seed Phrase", value: mnemonic, onChange: e => setMnemonic(e.target.value) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: importWallet, children: "Import Wallet" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => setIsImporting(!isImporting), children: isImporting ? 'Create New Wallet' : 'Import Wallet' })] })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: ["Public Key: ", publicKey] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Balance, { children: ["Balance: ", balance, " SOL"] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(QRCodeContainer, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Scan to Receive" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(QRCodeWrapper, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(qrcode_react__WEBPACK_IMPORTED_MODULE_5__.QRCodeSVG, { value: publicKey, size: 200, level: "H", includeMargin: true }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AddressText, { children: publicKey })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => window.open('https://explorer.solana.com/address/' + publicKey), children: "View on Explorer" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", { style: { margin: '20px 0' } }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Tabs, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Tab, { "$active": activeTab === 'tokens', onClick: () => setActiveTab('tokens'), children: "Tokens" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Tab, { "$active": activeTab === 'send', onClick: () => setActiveTab('send'), children: "Send" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Tab, { "$active": activeTab === 'history', onClick: () => setActiveTab('history'), children: "History" })] }), activeTab === 'tokens' && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Card, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Your Tokens" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TokenList, { children: tokens.map((token, index) => {
+    const addPriceAlert = () => {
+        if (newAlert.token && newAlert.price > 0) {
+            setTokenAlerts([...tokenAlerts, Object.assign(Object.assign({}, newAlert), { enabled: true })]);
+            setNewAlert({ token: '', price: 0, condition: 'above' });
+        }
+    };
+    const toggleAlert = (index) => {
+        const newAlerts = [...tokenAlerts];
+        newAlerts[index].enabled = !newAlerts[index].enabled;
+        setTokenAlerts(newAlerts);
+    };
+    const removeAlert = (index) => {
+        setTokenAlerts(tokenAlerts.filter((_, i) => i !== index));
+    };
+    const renderAdvancedTab = () => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Card, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Advanced Features" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(AdvancedSection, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { children: "Price Alerts" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { display: 'flex', gap: '10px', marginBottom: '10px' }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "text", placeholder: "Token Symbol", value: newAlert.token, onChange: e => setNewAlert(Object.assign(Object.assign({}, newAlert), { token: e.target.value })) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "number", placeholder: "Price", value: newAlert.price, onChange: e => setNewAlert(Object.assign(Object.assign({}, newAlert), { price: parseFloat(e.target.value) })) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("select", { value: newAlert.condition, onChange: e => setNewAlert(Object.assign(Object.assign({}, newAlert), { condition: e.target.value })), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "above", children: "Above" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "below", children: "Below" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: addPriceAlert, children: "Add Alert" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AlertList, { children: tokenAlerts.map((alert, index) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(AlertItem, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [alert.token, " ", alert.condition, " $", alert.price] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { display: 'flex', gap: '10px' }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => toggleAlert(index), children: alert.enabled ? 'Disable' : 'Enable' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => removeAlert(index), children: "Remove" })] })] }, index))) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(AdvancedSection, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { children: "Staking" }), stakedTokens.map((stake, index) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StakingCard, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { display: 'flex', justifyContent: 'space-between' }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { fontWeight: 'bold' }, children: stake.token }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: ["Staked: ", stake.amount] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: ["APY: ", stake.apy, "%"] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: ["Rewards: ", stake.rewards] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { children: "Claim Rewards" })] })] }) }, index)))] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(AdvancedSection, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { children: "Token News" }), tokenNews.map((news, index) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NewsItem, { onClick: () => window.open(news.url, '_blank'), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { fontWeight: 'bold' }, children: news.title }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { fontSize: '12px', opacity: 0.8 }, children: [news.source, " \u2022 ", news.date] })] }, index)))] })] }));
+    return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(styled_components__WEBPACK_IMPORTED_MODULE_7__.ThemeProvider, { theme: isDarkMode ? darkTheme : lightTheme, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Container, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Header, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Title, { children: "Solana Wallet" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ThemeToggle, { onClick: () => setIsDarkMode(!isDarkMode), children: isDarkMode ? '☀️' : '🌙' })] }), !publicKey ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { marginBottom: 8 }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "text", placeholder: "Wallet Name (optional)", value: walletName, onChange: e => setWalletName(e.target.value) }) }), !isImporting ? ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: createWallet, children: "Create New Wallet" })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "text", placeholder: "Enter Seed Phrase", value: mnemonic, onChange: e => setMnemonic(e.target.value) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: importWallet, children: "Import Wallet" })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => setIsImporting(!isImporting), children: isImporting ? 'Create New Wallet' : 'Import Wallet' })] })) : ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { fontSize: '12px', opacity: 0.8 }, children: "Wallet Name" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { fontSize: '14px', fontWeight: 500 }, children: walletName || 'My Wallet' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NetworkSelector, { value: network, onChange: (e) => setNetwork(e.target.value), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "devnet", children: "Devnet" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "testnet", children: "Testnet" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("option", { value: "mainnet-beta", children: "Mainnet" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Balance, { children: ["Balance: ", balance, " SOL"] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(QuickActions, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(QuickActionButton, { onClick: () => setActiveTab('send'), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ActionIcon, { children: "\uD83D\uDCE4" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ActionLabel, { children: "Send" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(QuickActionButton, { onClick: () => setActiveTab('tokens'), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ActionIcon, { children: "\uD83D\uDC8E" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ActionLabel, { children: "Tokens" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(QuickActionButton, { onClick: () => setActiveTab('history'), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ActionIcon, { children: "\uD83D\uDCCA" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ActionLabel, { children: "History" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(QuickActionButton, { onClick: () => setActiveTab('advanced'), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ActionIcon, { children: "\uD83D\uDD0D" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ActionLabel, { children: "Advanced" })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(QRCodeContainer, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Scan to Receive" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(QRCodeWrapper, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(qrcode_react__WEBPACK_IMPORTED_MODULE_5__.QRCodeSVG, { value: publicKey, size: 180, level: "H", includeMargin: true }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AddressText, { children: publicKey })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Tabs, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Tab, { "$active": activeTab === 'tokens', onClick: () => setActiveTab('tokens'), children: "Tokens" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Tab, { "$active": activeTab === 'send', onClick: () => setActiveTab('send'), children: "Send" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Tab, { "$active": activeTab === 'history', onClick: () => setActiveTab('history'), children: "History" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Tab, { "$active": activeTab === 'advanced', onClick: () => setActiveTab('advanced'), children: "Advanced" })] }), activeTab === 'tokens' && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Card, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Your Tokens" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TokenList, { children: tokens.map((token, index) => {
                                         var _a;
                                         return ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TokenCard, { onClick: () => setSelectedToken(token), children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TokenInfo, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TokenSymbol, { children: token.symbol || 'Unknown' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TokenAmount, { children: formatAmount(token.amount) }), token.price && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TokenPrice, { children: ["$", token.price.toFixed(2), " (", token.priceChange24h ? token.priceChange24h > 0 ? '+' : '' : '', (_a = token.priceChange24h) === null || _a === void 0 ? void 0 : _a.toFixed(2), "%)"] }))] }) }, index));
                                     }) }), selectedToken && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TokenChart, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h4", { children: [selectedToken.symbol, " Price History"] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ChartContainer, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_chartjs_2__WEBPACK_IMPORTED_MODULE_11__.Line, { data: {
                                                     labels: ['1D', '1W', '1M', '3M', '6M', '1Y'],
                                                     datasets: [{
                                                             label: `${selectedToken.symbol} Price`,
-                                                            data: [65, 59, 80, 81, 56, 55], // This should be replaced with actual price data
+                                                            data: [65, 59, 80, 81, 56, 55],
                                                             fill: false,
                                                             borderColor: 'rgb(75, 192, 192)',
                                                             tension: 0.1
@@ -91377,7 +91499,7 @@ const Popup = () => {
                                                             beginAtZero: false
                                                         }
                                                     }
-                                                } }) })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: fetchBalance, children: "Refresh" })] })), activeTab === 'send' && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Card, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h3", { children: ["Send ", selectedToken ? selectedToken.symbol : 'SOL'] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "text", placeholder: "Recipient Address", value: recipient, onChange: e => setRecipient(e.target.value) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "number", placeholder: `Amount (${selectedToken ? selectedToken.symbol : 'SOL'})`, value: amount, onChange: e => setAmount(e.target.value) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Button, { onClick: () => selectedToken ? sendToken(selectedToken, parseFloat(amount)) : sendSol(), children: ["Send ", selectedToken ? selectedToken.symbol : 'SOL'] })] })), activeTab === 'history' && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Card, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Transaction History" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TransactionGrid, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StatCard, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: "Total Sent" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [formatAmount(transactionStats.totalSent), " SOL"] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StatCard, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: "Total Received" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [formatAmount(transactionStats.totalReceived), " SOL"] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StatCard, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: "Average Amount" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [formatAmount(transactionStats.averageAmount), " SOL"] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StatCard, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: "Most Frequent Recipient" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [transactionStats.mostFrequentRecipient.slice(0, 8), "..."] })] })] }), transactions.map((tx, index) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TransactionCard, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { display: 'flex', justifyContent: 'space-between' }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: tx.type === 'send' ? 'Sent to' : 'Received from' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [tx.type === 'send' ? tx.to.slice(0, 8) : tx.from.slice(0, 8), "..."] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { textAlign: 'right' }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { color: tx.type === 'send' ? 'red' : 'green' }, children: [tx.type === 'send' ? '-' : '+', formatAmount(tx.amount), " SOL"] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: formatDate(tx.timestamp) })] })] }) }, index))), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => fetchTransactions(new _solana_web3_js__WEBPACK_IMPORTED_MODULE_3__.PublicKey(publicKey)), children: "Refresh" })] }))] })), message && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Message, { error: message.includes('fail'), children: message }), mnemonic && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Card, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Save Your Seed Phrase" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { children: mnemonic }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => setMnemonic(''), children: "I've Saved It" })] }))] }) }));
+                                                } }) })] })), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: fetchBalance, children: "Refresh" })] })), activeTab === 'send' && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Card, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h3", { children: ["Send ", selectedToken ? selectedToken.symbol : 'SOL'] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "text", placeholder: "Recipient Address", value: recipient, onChange: e => setRecipient(e.target.value) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Input, { type: "number", placeholder: `Amount (${selectedToken ? selectedToken.symbol : 'SOL'})`, value: amount, onChange: e => setAmount(e.target.value) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Button, { onClick: () => selectedToken ? sendToken(selectedToken, parseFloat(amount)) : sendSol(), children: ["Send ", selectedToken ? selectedToken.symbol : 'SOL'] })] })), activeTab === 'history' && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(Card, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Transaction History" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TransactionGrid, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StatCard, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: "Total Sent" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [formatAmount(transactionStats.totalSent), " SOL"] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StatCard, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: "Total Received" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [formatAmount(transactionStats.totalReceived), " SOL"] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StatCard, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: "Average Amount" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [formatAmount(transactionStats.averageAmount), " SOL"] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StatCard, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: "Most Frequent Recipient" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [transactionStats.mostFrequentRecipient.slice(0, 8), "..."] })] })] }), transactions.map((tx, index) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TransactionCard, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { display: 'flex', justifyContent: 'space-between' }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: tx.type === 'send' ? 'Sent to' : 'Received from' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { children: [tx.type === 'send' ? tx.to.slice(0, 8) : tx.from.slice(0, 8), "..."] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { textAlign: 'right' }, children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { color: tx.type === 'send' ? 'red' : 'green' }, children: [tx.type === 'send' ? '-' : '+', formatAmount(tx.amount), " SOL"] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { children: formatDate(tx.timestamp) })] })] }) }, index))), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => fetchTransactions(new _solana_web3_js__WEBPACK_IMPORTED_MODULE_3__.PublicKey(publicKey)), children: "Refresh" })] })), activeTab === 'advanced' && renderAdvancedTab()] })), message && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Message, { error: message.includes('fail'), children: message }), mnemonic && publicKey && ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SeedPhraseContainer, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "Save Your Seed Phrase" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SeedPhraseWarning, { children: "\u26A0\uFE0F Write down these 12 words in order and keep them safe. Anyone with these words can access your wallet." }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SeedPhraseGrid, { children: mnemonic.split(' ').map((word, index) => ((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SeedWord, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SeedWordNumber, { children: [index + 1, "."] }), word] }, index))) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(Button, { onClick: () => setMnemonic(''), children: "I've Saved It" })] }))] }) }));
 };
 const container = document.getElementById('root');
 const root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_2__.createRoot)(container);

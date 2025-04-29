@@ -54,33 +54,37 @@ const darkTheme: DefaultTheme = {
 
 const Container = styled.div<{ theme: DefaultTheme }>`
   width: 350px;
-  padding: 20px;
+  padding: 15px;
   font-family: 'Roboto', sans-serif;
   background: ${props => props.theme.colors.background};
   color: ${props => props.theme.colors.text};
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-height: 600px;
+  overflow-y: auto;
 `;
 
 const Header = styled.div<{ theme: DefaultTheme }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
+  margin-bottom: 15px;
   padding-bottom: 10px;
+  border-bottom: 1px solid ${props => props.theme.colors.border};
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
+  font-size: 20px;
   margin: 0;
+  font-weight: 600;
 `;
 
 const Balance = styled.div<{ theme: DefaultTheme }>`
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
-  margin: 20px 0;
+  margin: 15px 0;
   color: ${props => props.theme.colors.primary};
+  text-align: center;
 `;
 
 const Button = styled.button<{ theme: DefaultTheme }>`
@@ -148,82 +152,20 @@ const Tab = styled.button<{ $active: boolean; theme: DefaultTheme }>`
 `;
 
 const TokenList = styled.div`
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
-`;
-
-const TokenItem = styled.div<{ theme: DefaultTheme }>`
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid ${props => props.theme.colors.border};
-  
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-const NetworkSelector = styled.select<{ theme: DefaultTheme }>`
-  width: 100%;
-  padding: 8px;
-  margin: 4px 0;
-  border: 1px solid ${props => props.theme.colors.border};
-  border-radius: 4px;
-  background: ${props => props.theme.colors.card};
-  color: ${props => props.theme.colors.text};
-`;
-
-const ThemeToggle = styled.button<{ theme: DefaultTheme }>`
-  background: transparent;
-  border: 1px solid ${props => props.theme.colors.border};
-  color: ${props => props.theme.colors.text};
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-left: 10px;
-`;
-
-const TransactionCard = styled(Card)`
   margin: 10px 0;
-  cursor: pointer;
-  transition: transform 0.2s;
-  
-  &:hover {
-    transform: translateY(-2px);
-  }
-`;
-
-const TransactionGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin: 10px 0;
-`;
-
-const StatCard = styled(Card)`
-  text-align: center;
-  padding: 10px;
-`;
-
-const TokenChart = styled.div`
-  margin: 20px 0;
-  padding: 15px;
-  background: ${props => props.theme.colors.card};
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme.colors.border};
-`;
-
-const ChartContainer = styled.div`
-  height: 200px;
-  width: 100%;
 `;
 
 const TokenCard = styled.div<{ theme: DefaultTheme }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
-  margin: 10px 0;
+  padding: 12px;
+  margin: 8px 0;
+  background: ${props => props.theme.colors.card};
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.colors.border};
   cursor: pointer;
   transition: transform 0.2s;
   
@@ -235,22 +177,24 @@ const TokenCard = styled.div<{ theme: DefaultTheme }>`
 const TokenInfo = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const TokenAmount = styled.div<{ theme: DefaultTheme }>`
-  font-size: 18px;
-  font-weight: bold;
-  color: ${props => props.theme.colors.primary};
+  gap: 4px;
 `;
 
 const TokenSymbol = styled.div<{ theme: DefaultTheme }>`
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 600;
   color: ${props => props.theme.colors.text};
+`;
+
+const TokenAmount = styled.div<{ theme: DefaultTheme }>`
+  font-size: 14px;
+  color: ${props => props.theme.colors.primary};
 `;
 
 const TokenPrice = styled.div<{ theme: DefaultTheme }>`
   font-size: 12px;
   color: ${props => props.theme.colors.text};
+  opacity: 0.8;
 `;
 
 const QRCodeContainer = styled.div<{ theme: DefaultTheme }>`
@@ -318,6 +262,134 @@ const SeedPhraseWarning = styled.div<{ theme: DefaultTheme }>`
   line-height: 1.5;
 `;
 
+const NetworkSelector = styled.select<{ theme: DefaultTheme }>`
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0;
+  border: 1px solid ${props => props.theme.colors.border};
+  border-radius: 4px;
+  background: ${props => props.theme.colors.card};
+  color: ${props => props.theme.colors.text};
+`;
+
+const ThemeToggle = styled.button<{ theme: DefaultTheme }>`
+  background: transparent;
+  border: 1px solid ${props => props.theme.colors.border};
+  color: ${props => props.theme.colors.text};
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+`;
+
+const TransactionCard = styled(Card)`
+  margin: 10px 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+`;
+
+const TransactionGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 10px 0;
+`;
+
+const StatCard = styled(Card)`
+  text-align: center;
+  padding: 10px;
+`;
+
+const TokenChart = styled.div`
+  margin: 20px 0;
+  padding: 15px;
+  background: ${props => props.theme.colors.card};
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.colors.border};
+`;
+
+const ChartContainer = styled.div`
+  height: 200px;
+  width: 100%;
+`;
+
+const QuickActions = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 15px 0;
+`;
+
+const QuickActionButton = styled.button<{ theme: DefaultTheme }>`
+  background: ${props => props.theme.colors.card};
+  border: 1px solid ${props => props.theme.colors.border};
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: ${props => props.theme.colors.primary};
+    color: white;
+  }
+`;
+
+const ActionIcon = styled.span`
+  font-size: 20px;
+`;
+
+const ActionLabel = styled.span`
+  font-size: 12px;
+`;
+
+const AdvancedSection = styled.div<{ theme: DefaultTheme }>`
+    margin: 15px 0;
+    padding: 15px;
+    background: ${props => props.theme.colors.card};
+    border-radius: 8px;
+    border: 1px solid ${props => props.theme.colors.border};
+`;
+
+const AlertList = styled.div`
+    margin: 10px 0;
+`;
+
+const AlertItem = styled.div<{ theme: DefaultTheme }>`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: ${props => props.theme.colors.background};
+    border-radius: 4px;
+    margin: 5px 0;
+`;
+
+const StakingCard = styled.div<{ theme: DefaultTheme }>`
+    background: ${props => props.theme.colors.card};
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid ${props => props.theme.colors.border};
+`;
+
+const NewsItem = styled.div<{ theme: DefaultTheme }>`
+    padding: 10px;
+    border-bottom: 1px solid ${props => props.theme.colors.border};
+    cursor: pointer;
+    
+    &:hover {
+        background: ${props => props.theme.colors.background};
+    }
+`;
+
 interface TransactionHistory {
     signature: string;
     timestamp: number;
@@ -337,6 +409,27 @@ interface Token {
     priceChange24h?: number;
 }
 
+interface TokenAlert {
+    token: string;
+    price: number;
+    condition: 'above' | 'below';
+    enabled: boolean;
+}
+
+interface StakedToken {
+    token: string;
+    amount: number;
+    apy: number;
+    rewards: number;
+}
+
+interface TokenNews {
+    title: string;
+    source: string;
+    date: string;
+    url: string;
+}
+
 const Popup: React.FC = () => {
     const [balance, setBalance] = useState<number>(0);
     const [publicKey, setPublicKey] = useState<string>('');
@@ -346,7 +439,7 @@ const Popup: React.FC = () => {
     const [message, setMessage] = useState<string>('');
     const [mnemonic, setMnemonic] = useState<string>('');
     const [isImporting, setIsImporting] = useState<boolean>(false);
-    const [activeTab, setActiveTab] = useState<'tokens' | 'send' | 'history'>('tokens');
+    const [activeTab, setActiveTab] = useState<'tokens' | 'send' | 'history' | 'advanced'>('tokens');
     const [tokens, setTokens] = useState<Token[]>([]);
     const [network, setNetwork] = useState<'devnet' | 'testnet' | 'mainnet-beta'>('devnet');
     const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
@@ -358,6 +451,15 @@ const Popup: React.FC = () => {
         totalReceived: 0,
         averageAmount: 0,
         mostFrequentRecipient: ''
+    });
+    const [tokenAlerts, setTokenAlerts] = useState<TokenAlert[]>([]);
+    const [stakedTokens, setStakedTokens] = useState<StakedToken[]>([]);
+    const [tokenNews, setTokenNews] = useState<TokenNews[]>([]);
+    const [showAdvanced, setShowAdvanced] = useState(false);
+    const [newAlert, setNewAlert] = useState<{ token: string; price: number; condition: 'above' | 'below' }>({
+        token: '',
+        price: 0,
+        condition: 'above'
     });
 
     const getConnection = () => {
@@ -628,6 +730,100 @@ const Popup: React.FC = () => {
         return amount.toFixed(4);
     };
 
+    const addPriceAlert = () => {
+        if (newAlert.token && newAlert.price > 0) {
+            setTokenAlerts([...tokenAlerts, { ...newAlert, enabled: true }]);
+            setNewAlert({ token: '', price: 0, condition: 'above' });
+        }
+    };
+
+    const toggleAlert = (index: number) => {
+        const newAlerts = [...tokenAlerts];
+        newAlerts[index].enabled = !newAlerts[index].enabled;
+        setTokenAlerts(newAlerts);
+    };
+
+    const removeAlert = (index: number) => {
+        setTokenAlerts(tokenAlerts.filter((_, i) => i !== index));
+    };
+
+    const renderAdvancedTab = () => (
+        <Card>
+            <h3>Advanced Features</h3>
+            <AdvancedSection>
+                <h4>Price Alerts</h4>
+                <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                    <Input
+                        type="text"
+                        placeholder="Token Symbol"
+                        value={newAlert.token}
+                        onChange={e => setNewAlert({ ...newAlert, token: e.target.value })}
+                    />
+                    <Input
+                        type="number"
+                        placeholder="Price"
+                        value={newAlert.price}
+                        onChange={e => setNewAlert({ ...newAlert, price: parseFloat(e.target.value) })}
+                    />
+                    <select
+                        value={newAlert.condition}
+                        onChange={e => setNewAlert({ ...newAlert, condition: e.target.value as 'above' | 'below' })}
+                    >
+                        <option value="above">Above</option>
+                        <option value="below">Below</option>
+                    </select>
+                    <Button onClick={addPriceAlert}>Add Alert</Button>
+                </div>
+                <AlertList>
+                    {tokenAlerts.map((alert, index) => (
+                        <AlertItem key={index}>
+                            <div>
+                                {alert.token} {alert.condition} ${alert.price}
+                            </div>
+                            <div style={{ display: 'flex', gap: '10px' }}>
+                                <Button onClick={() => toggleAlert(index)}>
+                                    {alert.enabled ? 'Disable' : 'Enable'}
+                                </Button>
+                                <Button onClick={() => removeAlert(index)}>Remove</Button>
+                            </div>
+                        </AlertItem>
+                    ))}
+                </AlertList>
+            </AdvancedSection>
+
+            <AdvancedSection>
+                <h4>Staking</h4>
+                {stakedTokens.map((stake, index) => (
+                    <StakingCard key={index}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                            <div>
+                                <div style={{ fontWeight: 'bold' }}>{stake.token}</div>
+                                <div>Staked: {stake.amount}</div>
+                                <div>APY: {stake.apy}%</div>
+                            </div>
+                            <div>
+                                <div>Rewards: {stake.rewards}</div>
+                                <Button>Claim Rewards</Button>
+                            </div>
+                        </div>
+                    </StakingCard>
+                ))}
+            </AdvancedSection>
+
+            <AdvancedSection>
+                <h4>Token News</h4>
+                {tokenNews.map((news, index) => (
+                    <NewsItem key={index} onClick={() => window.open(news.url, '_blank')}>
+                        <div style={{ fontWeight: 'bold' }}>{news.title}</div>
+                        <div style={{ fontSize: '12px', opacity: 0.8 }}>
+                            {news.source} • {news.date}
+                        </div>
+                    </NewsItem>
+                ))}
+            </AdvancedSection>
+        </Card>
+    );
+
     return (
         <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
             <Container>
@@ -637,16 +833,6 @@ const Popup: React.FC = () => {
                         {isDarkMode ? '☀️' : '🌙'}
                     </ThemeToggle>
                 </Header>
-                {publicKey && (
-                    <>
-                        <div><b>Wallet Name:</b> <Input type="text" value={walletName} onChange={e => setWalletName(e.target.value)} /> <Button onClick={saveWalletName}>Save</Button></div>
-                        <NetworkSelector value={network} onChange={(e) => setNetwork(e.target.value as any)}>
-                            <option value="devnet">Devnet</option>
-                            <option value="testnet">Testnet</option>
-                            <option value="mainnet-beta">Mainnet</option>
-                        </NetworkSelector>
-                    </>
-                )}
                 {!publicKey ? (
                     <>
                         <div style={{ marginBottom: 8 }}>
@@ -664,26 +850,53 @@ const Popup: React.FC = () => {
                     </>
                 ) : (
                     <>
-                        <div>Public Key: {publicKey}</div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div>
+                                <div style={{ fontSize: '12px', opacity: 0.8 }}>Wallet Name</div>
+                                <div style={{ fontSize: '14px', fontWeight: 500 }}>{walletName || 'My Wallet'}</div>
+                            </div>
+                            <NetworkSelector value={network} onChange={(e) => setNetwork(e.target.value as any)}>
+                                <option value="devnet">Devnet</option>
+                                <option value="testnet">Testnet</option>
+                                <option value="mainnet-beta">Mainnet</option>
+                            </NetworkSelector>
+                        </div>
                         <Balance>Balance: {balance} SOL</Balance>
+                        <QuickActions>
+                            <QuickActionButton onClick={() => setActiveTab('send')}>
+                                <ActionIcon>📤</ActionIcon>
+                                <ActionLabel>Send</ActionLabel>
+                            </QuickActionButton>
+                            <QuickActionButton onClick={() => setActiveTab('tokens')}>
+                                <ActionIcon>💎</ActionIcon>
+                                <ActionLabel>Tokens</ActionLabel>
+                            </QuickActionButton>
+                            <QuickActionButton onClick={() => setActiveTab('history')}>
+                                <ActionIcon>📊</ActionIcon>
+                                <ActionLabel>History</ActionLabel>
+                            </QuickActionButton>
+                            <QuickActionButton onClick={() => setActiveTab('advanced')}>
+                                <ActionIcon>🔍</ActionIcon>
+                                <ActionLabel>Advanced</ActionLabel>
+                            </QuickActionButton>
+                        </QuickActions>
                         <QRCodeContainer>
                             <h3>Scan to Receive</h3>
                             <QRCodeWrapper>
                                 <QRCodeSVG
                                     value={publicKey}
-                                    size={200}
+                                    size={180}
                                     level="H"
                                     includeMargin={true}
                                 />
                             </QRCodeWrapper>
                             <AddressText>{publicKey}</AddressText>
                         </QRCodeContainer>
-                        <Button onClick={() => window.open('https://explorer.solana.com/address/' + publicKey)}>View on Explorer</Button>
-                        <hr style={{ margin: '20px 0' }} />
                         <Tabs>
                             <Tab $active={activeTab === 'tokens'} onClick={() => setActiveTab('tokens')}>Tokens</Tab>
                             <Tab $active={activeTab === 'send'} onClick={() => setActiveTab('send')}>Send</Tab>
                             <Tab $active={activeTab === 'history'} onClick={() => setActiveTab('history')}>History</Tab>
+                            <Tab $active={activeTab === 'advanced'} onClick={() => setActiveTab('advanced')}>Advanced</Tab>
                         </Tabs>
                         {activeTab === 'tokens' && (
                             <Card>
@@ -712,7 +925,7 @@ const Popup: React.FC = () => {
                                                     labels: ['1D', '1W', '1M', '3M', '6M', '1Y'],
                                                     datasets: [{
                                                         label: `${selectedToken.symbol} Price`,
-                                                        data: [65, 59, 80, 81, 56, 55], // This should be replaced with actual price data
+                                                        data: [65, 59, 80, 81, 56, 55],
                                                         fill: false,
                                                         borderColor: 'rgb(75, 192, 192)',
                                                         tension: 0.1
@@ -789,10 +1002,11 @@ const Popup: React.FC = () => {
                                 <Button onClick={() => fetchTransactions(new PublicKey(publicKey))}>Refresh</Button>
                             </Card>
                         )}
+                        {activeTab === 'advanced' && renderAdvancedTab()}
                     </>
                 )}
                 {message && <Message error={message.includes('fail')}>{message}</Message>}
-                {mnemonic && (
+                {mnemonic && publicKey && (
                     <SeedPhraseContainer>
                         <h3>Save Your Seed Phrase</h3>
                         <SeedPhraseWarning>
