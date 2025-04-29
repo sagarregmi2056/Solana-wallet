@@ -13,6 +13,7 @@ window.solanaWallet = {
       });
     });
   },
+  
   signTransaction: (transaction) => {
     return new Promise((resolve, reject) => {
       window.postMessage({ type: 'SOLANA_WALLET_SIGN_TRANSACTION', transaction }, '*');
