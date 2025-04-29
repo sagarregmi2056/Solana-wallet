@@ -1,0 +1,35 @@
+{
+    "name": "solana-wallet-extension",
+    "version": "1.0.0",
+    "description": "A Solana wallet browser extension",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack --watch --config webpack.config.js",
+        "build": "webpack --config webpack.config.js",
+        "test": "jest"
+    },
+    "dependencies": {
+        "@solana/spl-token": "^0.3.9",
+        "@solana/web3.js": "^1.87.6",
+        "bs58": "^5.0.0",
+        "dotenv": "^16.5.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.21.1",
+        "styled-components": "^6.1.1",
+        "tweetnacl": "^1.0.3"
+    },
+    "devDependencies": {
+        "@types/chrome": "^0.0.254",
+        "@types/jest": "^29.5.11",
+        "@types/react": "^18.2.45",
+        "@types/react-dom": "^18.2.18",
+        "copy-webpack-plugin": "^11.0.0",
+        "html-webpack-plugin": "^5.6.0",
+        "jest": "^29.7.0",
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.3.3",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4"
+    }
+}
